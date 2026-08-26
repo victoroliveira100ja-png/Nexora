@@ -1,4 +1,4 @@
-  :root{
+:root{
     --bg-void:#04070c;
     --bg-panel:#080d16;
     --bg-panel-2:#0c1320;
@@ -55,7 +55,7 @@
     display:flex;align-items:center;justify-content:space-between;
   }
   .brand{display:flex;align-items:center;gap:10px;}
-  .brand-mark{height:32px;width:auto;display:block;}
+  .brand-mark{height:52px;width:auto;display:block;}
   .nav-links{display:flex;gap:36px;font-size:0.9rem;color:var(--slate);}
   .nav-links a:hover{color:var(--white);}
   .nav-cta{
