@@ -739,7 +739,9 @@ section{
 
   max-width:500px;
 
-  height:500px;
+  height:auto;
+
+  min-height:500px;
 
   margin:0 auto;
 
@@ -759,9 +761,13 @@ section{
 
   display:flex;
 
+  flex-direction:column;
+
   align-items:center;
 
   justify-content:center;
+
+  padding:44px 34px 38px;
 
 }
 
@@ -833,9 +839,9 @@ section{
 
   z-index:2;
 
-  width:78%;
+  width:66%;
 
-  max-width:390px;
+  max-width:280px;
 
   height:auto;
 
@@ -877,6 +883,116 @@ section{
       0 20px 55px
       rgba(0,0,0,0.55)
     );
+
+}
+
+
+/* =====================================================
+   LEGENDA / PREENCHIMENTO DO PAINEL
+===================================================== */
+
+.about-photo-caption{
+
+  position:relative;
+
+  z-index:2;
+
+  margin-top:32px;
+
+  width:100%;
+
+  max-width:340px;
+
+  text-align:center;
+
+}
+
+
+.caption-line{
+
+  display:block;
+
+  width:48px;
+
+  height:1px;
+
+  background:var(--line-strong);
+
+  margin:0 auto 20px;
+
+}
+
+
+.about-photo-caption > p{
+
+  font-family:'Inter',sans-serif;
+
+  font-size:0.82rem;
+
+  line-height:1.65;
+
+  color:#9ba9bf;
+
+}
+
+
+.caption-stats{
+
+  margin-top:30px;
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(3,1fr);
+
+  gap:10px;
+
+  border-top:1px solid var(--line);
+
+  padding-top:24px;
+
+}
+
+
+.stat{
+
+  display:flex;
+
+  flex-direction:column;
+
+  align-items:center;
+
+  gap:5px;
+
+}
+
+
+.stat-num{
+
+  font-family:'Sora',sans-serif;
+
+  font-weight:700;
+
+  font-size:1.15rem;
+
+  color:var(--cyan);
+
+}
+
+
+.stat-label{
+
+  font-family:'JetBrains Mono',monospace;
+
+  font-size:0.6rem;
+
+  letter-spacing:0.03em;
+
+  line-height:1.4;
+
+  color:var(--slate);
+
+  text-transform:uppercase;
 
 }
 
@@ -1338,7 +1454,7 @@ footer{
 
     max-width:520px;
 
-    height:480px;
+    min-height:auto;
 
   }
 
@@ -1485,18 +1601,27 @@ footer{
 
   .about-photo{
 
-    height:380px;
+    height:auto;
 
     max-width:100%;
+
+    padding:36px 24px 30px;
 
   }
 
 
   .about-logo{
 
-    width:82%;
+    width:70%;
 
-    max-width:330px;
+    max-width:230px;
+
+  }
+
+
+  .about-photo-caption{
+
+    margin-top:26px;
 
   }
 
@@ -1638,14 +1763,14 @@ footer{
 
   .about-photo{
 
-    height:330px;
+    padding:30px 20px 26px;
 
   }
 
 
   .about-logo{
 
-    width:84%;
+    width:74%;
 
   }
 
