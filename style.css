@@ -79,13 +79,6 @@ h3{
 }
 
 
-.mono{
-
-  font-family:'JetBrains Mono',monospace;
-
-}
-
-
 /* =====================================================
    EYEBROW
 ===================================================== */
@@ -650,8 +643,6 @@ nav{
 
   font-weight:600;
 
-  letter-spacing:0.02em;
-
 }
 
 
@@ -749,8 +740,6 @@ section{
   max-width:500px;
 
   height:500px;
-
-  min-height:0;
 
   margin:0 auto;
 
@@ -1107,36 +1096,6 @@ section{
 }
 
 
-.card::after{
-
-  content:'';
-
-  position:absolute;
-
-  top:0;
-
-  left:0;
-
-  width:100%;
-
-  height:1px;
-
-  background:
-
-    linear-gradient(
-      90deg,
-      transparent,
-      var(--cyan),
-      transparent
-    );
-
-  opacity:0;
-
-  transition:opacity .3s ease;
-
-}
-
-
 .card:hover{
 
   border-color:var(--line-strong);
@@ -1144,13 +1103,6 @@ section{
   transform:translateY(-4px);
 
   background:#0a101a;
-
-}
-
-
-.card:hover::after{
-
-  opacity:1;
 
 }
 
@@ -1184,17 +1136,6 @@ section{
   font-size:1.05rem;
 
   color:#04070c;
-
-  border:1px solid transparent;
-
-  transition:border-color .25s ease;
-
-}
-
-
-.card:hover .avatar{
-
-  border-color:var(--cyan);
 
 }
 
@@ -1327,11 +1268,30 @@ section{
 }
 
 
+/* =====================================================
+   NÚMERO DO WHATSAPP
+===================================================== */
+
+.contact-number{
+
+  margin-top:20px;
+
+  font-family:'JetBrains Mono',monospace;
+
+  font-size:0.82rem;
+
+  color:var(--cyan);
+
+  letter-spacing:0.04em;
+
+}
+
+
 .contact .hero-actions{
 
   justify-content:center;
 
-  margin-top:36px;
+  margin-top:30px;
 
 }
 
@@ -1630,6 +1590,13 @@ footer{
 
   }
 
+
+  .contact-number{
+
+    font-size:0.78rem;
+
+  }
+
 }
 
 
@@ -1714,6 +1681,13 @@ footer{
   .contact p{
 
     font-size:0.83rem;
+
+  }
+
+
+  .contact-number{
+
+    font-size:0.74rem;
 
   }
 
