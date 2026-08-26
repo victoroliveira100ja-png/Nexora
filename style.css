@@ -1,31 +1,47 @@
 :root{
 
   --bg-void:#04070c;
+
   --bg-panel:#080d16;
+
   --bg-panel-2:#0c1320;
 
   --blue:#0b5fff;
+
   --blue-mid:#1c7dff;
+
   --cyan:#33d6ff;
 
   --white:#eef3fb;
+
   --slate:#8291ab;
 
   --line:rgba(51,214,255,0.14);
+
   --line-strong:rgba(51,214,255,0.35);
 
 }
 
 
+/* =====================================================
+   RESET
+===================================================== */
+
 *{
+
   margin:0;
+
   padding:0;
+
   box-sizing:border-box;
+
 }
 
 
 html{
+
   scroll-behavior:smooth;
+
 }
 
 
@@ -78,6 +94,10 @@ h3{
 }
 
 
+/* =====================================================
+   EYEBROW
+===================================================== */
+
 .eyebrow{
 
   font-family:'JetBrains Mono',monospace;
@@ -104,6 +124,7 @@ h3{
   content:'';
 
   width:22px;
+
   height:1px;
 
   background:var(--cyan);
@@ -112,6 +133,10 @@ h3{
 
 }
 
+
+/* =====================================================
+   CONTAINER
+===================================================== */
 
 .wrap{
 
@@ -124,16 +149,18 @@ h3{
 }
 
 
-/* =========================================================
-   NAV
-========================================================= */
+/* =====================================================
+   HEADER
+===================================================== */
 
 header{
 
   position:fixed;
 
   top:0;
+
   left:0;
+
   right:0;
 
   z-index:100;
@@ -141,6 +168,8 @@ header{
   background:rgba(4,7,12,0.72);
 
   backdrop-filter:blur(14px);
+
+  -webkit-backdrop-filter:blur(14px);
 
   border-bottom:1px solid var(--line);
 
@@ -188,6 +217,8 @@ nav{
 
   display:flex;
 
+  align-items:center;
+
   gap:36px;
 
   font-size:0.9rem;
@@ -199,7 +230,30 @@ nav{
 
 .nav-links a{
 
+  position:relative;
+
   transition:color .2s ease;
+
+}
+
+
+.nav-links a::after{
+
+  content:'';
+
+  position:absolute;
+
+  left:0;
+
+  bottom:-7px;
+
+  width:0;
+
+  height:1px;
+
+  background:var(--cyan);
+
+  transition:width .25s ease;
 
 }
 
@@ -211,9 +265,16 @@ nav{
 }
 
 
-/* =========================================================
+.nav-links a:hover::after{
+
+  width:100%;
+
+}
+
+
+/* =====================================================
    HERO
-========================================================= */
+===================================================== */
 
 .hero{
 
@@ -258,6 +319,15 @@ nav{
   background-size:64px 64px;
 
   mask-image:
+
+    radial-gradient(
+      ellipse 70% 60% at 50% 30%,
+      black 30%,
+      transparent 75%
+    );
+
+  -webkit-mask-image:
+
     radial-gradient(
       ellipse 70% 60% at 50% 30%,
       black 30%,
@@ -280,6 +350,8 @@ nav{
   height:100%;
 
   opacity:0.55;
+
+  pointer-events:none;
 
 }
 
@@ -354,6 +426,10 @@ nav{
 
   color:var(--white);
 
+  text-shadow:
+    0 0 40px
+    rgba(51,214,255,0.08);
+
 }
 
 
@@ -382,7 +458,7 @@ nav{
 
   margin-top:26px;
 
-  font-size:1.08rem;
+  font-size:1.04rem;
 
   color:var(--slate);
 
@@ -408,6 +484,10 @@ nav{
 
 .btn-primary{
 
+  position:relative;
+
+  overflow:hidden;
+
   background:
 
     linear-gradient(
@@ -426,7 +506,7 @@ nav{
 
   padding:15px 28px;
 
-  border-radius:2px;
+  border-radius:3px;
 
   transition:
 
@@ -435,6 +515,36 @@ nav{
     box-shadow .2s ease;
 
   display:inline-block;
+
+}
+
+
+.btn-primary::before{
+
+  content:'';
+
+  position:absolute;
+
+  top:0;
+
+  left:-100%;
+
+  width:70%;
+
+  height:100%;
+
+  background:rgba(255,255,255,0.18);
+
+  transform:skewX(-20deg);
+
+  transition:left .5s ease;
+
+}
+
+
+.btn-primary:hover::before{
+
+  left:140%;
 
 }
 
@@ -465,7 +575,7 @@ nav{
 
   padding:15px 28px;
 
-  border-radius:2px;
+  border-radius:3px;
 
   transition:all .2s ease;
 
@@ -477,6 +587,8 @@ nav{
   border-color:var(--cyan);
 
   color:var(--cyan);
+
+  transform:translateY(-2px);
 
 }
 
@@ -500,6 +612,8 @@ nav{
   font-size:0.82rem;
 
   color:var(--slate);
+
+  background:rgba(4,7,12,0.25);
 
 }
 
@@ -540,9 +654,9 @@ nav{
 }
 
 
-/* =========================================================
+/* =====================================================
    SEÇÕES
-========================================================= */
+===================================================== */
 
 section{
 
@@ -581,21 +695,21 @@ section{
 }
 
 
-/* =========================================================
+/* =====================================================
    QUEM SOMOS
-========================================================= */
+===================================================== */
 
 .about{
 
   border-top:1px solid var(--line);
 
-  padding:140px 0;
+  padding:120px 0;
 
   background:
 
     radial-gradient(
 
-      circle at 20% 50%,
+      circle at 15% 50%,
 
       rgba(11,95,255,0.06),
 
@@ -611,23 +725,33 @@ section{
   display:grid;
 
   grid-template-columns:
-    minmax(380px,0.9fr)
-    1.25fr;
+    0.85fr
+    1.15fr;
 
-  gap:90px;
+  gap:70px;
 
   align-items:center;
 
 }
 
 
-/* PAINEL DA IMAGEM */
+/* =====================================================
+   PAINEL DA IMAGEM
+===================================================== */
 
 .about-photo{
 
   position:relative;
 
-  min-height:620px;
+  width:100%;
+
+  max-width:500px;
+
+  height:500px;
+
+  min-height:0;
+
+  margin:0 auto;
 
   border-radius:5px;
 
@@ -636,13 +760,9 @@ section{
   background:
 
     linear-gradient(
-
       180deg,
-
       rgba(12,19,32,0.92),
-
       rgba(4,7,12,0.98)
-
     );
 
   overflow:hidden;
@@ -656,11 +776,11 @@ section{
 }
 
 
-/* GRID */
+/* =====================================================
+   GRID DA IMAGEM
+===================================================== */
 
-.about-photo::before{
-
-  content:'';
+.about-grid-overlay{
 
   position:absolute;
 
@@ -681,14 +801,16 @@ section{
 
   background-size:28px 28px;
 
-  opacity:.7;
+  opacity:0.65;
 
   pointer-events:none;
 
 }
 
 
-/* GLOW */
+/* =====================================================
+   GLOW DA IMAGEM
+===================================================== */
 
 .about-image-glow{
 
@@ -719,7 +841,9 @@ section{
 }
 
 
-/* LOGO ORIGINAL */
+/* =====================================================
+   LOGO
+===================================================== */
 
 .about-logo{
 
@@ -727,7 +851,9 @@ section{
 
   z-index:2;
 
-  width:min(78%,480px);
+  width:78%;
+
+  max-width:390px;
 
   height:auto;
 
@@ -773,43 +899,47 @@ section{
 }
 
 
-/* TEXTO */
+/* =====================================================
+   TEXTO
+===================================================== */
 
 .about-text{
 
-  max-width:700px;
+  max-width:680px;
 
 }
 
 
 .about-eyebrow{
 
-  font-size:0.95rem;
+  font-size:0.78rem;
 
-  letter-spacing:0.28em;
-
-  font-weight:500;
+  letter-spacing:0.25em;
 
 }
 
 
 .about-text h2{
 
-  margin-top:20px;
+  margin-top:18px;
+
+  font-family:'Sora',sans-serif;
 
   font-size:clamp(
-    2.4rem,
-    4vw,
-    4rem
+    2rem,
+    3vw,
+    2.85rem
   );
 
-  line-height:1.12;
+  line-height:1.18;
 
-  font-weight:700;
+  font-weight:600;
+
+  letter-spacing:-0.025em;
 
   color:var(--white);
 
-  max-width:720px;
+  max-width:680px;
 
 }
 
@@ -818,29 +948,34 @@ section{
 
   color:#9ba9bf;
 
-  font-size:1.08rem;
+  font-family:'Inter',sans-serif;
 
-  line-height:1.85;
+  font-size:0.96rem;
 
-  margin-top:24px;
+  line-height:1.75;
 
-  max-width:690px;
+  margin-top:20px;
+
+  max-width:650px;
 
 }
 
 
-/* PILARES */
+/* =====================================================
+   PILARES
+===================================================== */
 
 .pillars{
 
-  margin-top:50px;
+  margin-top:42px;
 
   display:grid;
 
   grid-template-columns:
-    1fr 1fr;
+    1fr
+    1fr;
 
-  gap:30px 34px;
+  gap:26px 32px;
 
 }
 
@@ -857,7 +992,7 @@ section{
     0
     0
     4px
-    18px;
+    16px;
 
   transition:
 
@@ -881,9 +1016,9 @@ section{
 
   font-family:'Sora',sans-serif;
 
-  font-size:1.05rem;
+  font-size:0.92rem;
 
-  line-height:1.35;
+  line-height:1.4;
 
   font-weight:600;
 
@@ -894,24 +1029,38 @@ section{
 
 .pillar p{
 
-  margin-top:9px;
+  margin-top:7px;
 
-  font-size:0.94rem;
+  font-family:'Inter',sans-serif;
 
-  line-height:1.65;
+  font-size:0.84rem;
+
+  line-height:1.6;
 
   color:var(--slate);
 
 }
 
 
-/* =========================================================
+/* =====================================================
    EQUIPE
-========================================================= */
+===================================================== */
 
 .team{
 
   border-top:1px solid var(--line);
+
+  background:
+
+    radial-gradient(
+
+      circle at 85% 20%,
+
+      rgba(11,95,255,0.045),
+
+      transparent 30%
+
+    );
 
 }
 
@@ -958,7 +1107,39 @@ section{
 
     border-color .25s ease,
 
-    transform .25s ease;
+    transform .25s ease,
+
+    background .25s ease;
+
+}
+
+
+.card::after{
+
+  content:'';
+
+  position:absolute;
+
+  top:0;
+
+  left:0;
+
+  width:100%;
+
+  height:1px;
+
+  background:
+
+    linear-gradient(
+      90deg,
+      transparent,
+      var(--cyan),
+      transparent
+    );
+
+  opacity:0;
+
+  transition:opacity .3s ease;
 
 }
 
@@ -969,12 +1150,14 @@ section{
 
   transform:translateY(-4px);
 
+  background:#0a101a;
+
 }
 
 
-.card:hover .avatar{
+.card:hover::after{
 
-  border-color:var(--cyan);
+  opacity:1;
 
 }
 
@@ -1012,6 +1195,13 @@ section{
   border:1px solid transparent;
 
   transition:border-color .25s ease;
+
+}
+
+
+.card:hover .avatar{
+
+  border-color:var(--cyan);
 
 }
 
@@ -1063,7 +1253,9 @@ section{
 
   margin-top:44px;
 
-  font-size:0.82rem;
+  font-size:0.78rem;
+
+  line-height:1.6;
 
   color:var(--slate);
 
@@ -1081,9 +1273,9 @@ section{
 }
 
 
-/* =========================================================
+/* =====================================================
    CONTATO
-========================================================= */
+===================================================== */
 
 .contact{
 
@@ -1122,6 +1314,8 @@ section{
 
   margin:18px auto 0;
 
+  font-weight:700;
+
 }
 
 
@@ -1135,7 +1329,7 @@ section{
 
   line-height:1.7;
 
-  font-size:1.02rem;
+  font-size:1rem;
 
 }
 
@@ -1149,9 +1343,9 @@ section{
 }
 
 
-/* =========================================================
+/* =====================================================
    FOOTER
-========================================================= */
+===================================================== */
 
 footer{
 
@@ -1163,16 +1357,16 @@ footer{
 
   color:var(--slate);
 
-  font-size:0.8rem;
+  font-size:0.78rem;
 
   font-family:'JetBrains Mono',monospace;
 
 }
 
 
-/* =========================================================
-   RESPONSIVIDADE
-========================================================= */
+/* =====================================================
+   TABLET
+===================================================== */
 
 @media (max-width:1000px){
 
@@ -1180,16 +1374,18 @@ footer{
 
     grid-template-columns:1fr;
 
-    gap:60px;
+    gap:55px;
 
   }
 
 
   .about-photo{
 
-    min-height:500px;
+    width:100%;
 
-    max-width:650px;
+    max-width:520px;
+
+    height:480px;
 
   }
 
@@ -1201,9 +1397,16 @@ footer{
   }
 
 
+  .about-text h2{
+
+    max-width:700px;
+
+  }
+
+
   .about-text > p{
 
-    max-width:100%;
+    max-width:700px;
 
   }
 
@@ -1218,6 +1421,10 @@ footer{
 }
 
 
+/* =====================================================
+   MOBILE
+===================================================== */
+
 @media (max-width:760px){
 
   nav{
@@ -1229,14 +1436,18 @@ footer{
 
   .brand-mark{
 
-    height:44px;
+    height:40px;
 
   }
 
 
   .nav-links{
 
-    display:none;
+    display:flex;
+
+    gap:14px;
+
+    font-size:0.68rem;
 
   }
 
@@ -1261,6 +1472,8 @@ footer{
 
     padding-top:120px;
 
+    padding-bottom:70px;
+
   }
 
 
@@ -1272,23 +1485,23 @@ footer{
       3.5rem
     );
 
+    line-height:1.08;
+
+  }
+
+
+  .hero p.lead{
+
+    font-size:0.95rem;
+
+    line-height:1.65;
+
   }
 
 
   .wix-badge{
 
     margin-top:40px;
-
-  }
-
-}
-
-
-@media (max-width:650px){
-
-  section{
-
-    padding:90px 0;
 
   }
 
@@ -1302,7 +1515,9 @@ footer{
 
   .about-photo{
 
-    min-height:380px;
+    height:380px;
+
+    max-width:100%;
 
   }
 
@@ -1311,12 +1526,14 @@ footer{
 
     width:82%;
 
+    max-width:330px;
+
   }
 
 
   .about-eyebrow{
 
-    font-size:0.78rem;
+    font-size:0.72rem;
 
     letter-spacing:0.18em;
 
@@ -1325,18 +1542,18 @@ footer{
 
   .about-text h2{
 
-    font-size:2rem;
+    font-size:1.9rem;
 
-    line-height:1.18;
+    line-height:1.2;
 
   }
 
 
   .about-text > p{
 
-    font-size:1rem;
+    font-size:0.94rem;
 
-    line-height:1.75;
+    line-height:1.7;
 
   }
 
@@ -1345,7 +1562,7 @@ footer{
 
     grid-template-columns:1fr;
 
-    gap:26px;
+    gap:24px;
 
   }
 
@@ -1378,11 +1595,100 @@ footer{
 }
 
 
+/* =====================================================
+   MOBILE PEQUENO
+===================================================== */
+
+@media (max-width:480px){
+
+  .nav-links{
+
+    gap:9px;
+
+    font-size:0.62rem;
+
+  }
+
+
+  .brand-mark{
+
+    height:36px;
+
+  }
+
+
+  section{
+
+    padding:80px 0;
+
+  }
+
+
+  .about{
+
+    padding:80px 0;
+
+  }
+
+
+  .about-photo{
+
+    height:330px;
+
+  }
+
+
+  .about-logo{
+
+    width:84%;
+
+  }
+
+
+  .section-head{
+
+    margin-bottom:45px;
+
+  }
+
+
+  .section-head h2{
+
+    font-size:2rem;
+
+  }
+
+
+  .card{
+
+    padding:24px 22px;
+
+  }
+
+
+  .contact h2{
+
+    font-size:2rem;
+
+  }
+
+}
+
+
+/* =====================================================
+   REDUZIR MOVIMENTO
+===================================================== */
+
 @media (prefers-reduced-motion:reduce){
 
-  *{
+  html{
 
-    scroll-behavior:auto !important;
+    scroll-behavior:auto;
+
+  }
+
+
+  *{
 
     transition:none !important;
 
